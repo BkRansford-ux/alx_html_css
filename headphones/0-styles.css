@@ -1,0 +1,119 @@
+/* =============================
+   0-styles.css
+   ============================= */
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #fff;
+  background-color: #000;
+}
+
+/* VARIABLES */
+:root {
+  --max-width: 1000px;
+  --primary-color: #FF6565;
+  --text-color: #fff;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 32px;
+}
+
+/* LAYOUT WRAPPER */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  position: relative;
+  z-index: 2;
+}
+
+header img.logo {
+  width: 160px;
+  height: auto;
+}
+
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-size: var(--font-size-base);
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav ul li a:active {
+  color: var(--primary-color);
+}
+
+/* HERO */
+.hero {
+  background: url('images/hero-bg.jpg') center/cover no-repeat;
+  text-align: center;
+  padding: 120px 20px;
+}
+
+.hero h1 {
+  font-size: var(--font-size-xl);
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: var(--font-size-lg);
+  margin-bottom: 30px;
+}
+
+.hero button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  font-size: var(--font-size-base);
+  border-radius: 5px;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.hero button:hover,
+.hero button:active {
+  opacity: 0.9;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  nav ul {
+    display: none; /* will later replace with hamburger */
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .hero {
+    padding: 80px 20px;
+  }
+}

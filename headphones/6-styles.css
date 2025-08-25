@@ -1,0 +1,175 @@
+/* ===============================
+   Base / Reset
+   =============================== */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root{
+  --brand: #FF6565;
+  --ink: #071629;
+  --bg: #ffffff;
+  --muted: #4b5a6a;
+  --maxw: 1000px;
+  --radius: 14px;
+  --shadow: 0 10px 24px rgba(0,0,0,.12);
+}
+
+html, body { height: 100%; }
+
+body{
+  font-family: "Source Sans Pro", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.5;
+}
+
+/* Containers */
+.container{
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 0 20px;
+}
+
+/* ===============================
+   Header
+   =============================== */
+
+.site-header{
+  border-bottom: 1px solid #e9eef3;
+  background: #fff;
+}
+
+.site-header .container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+}
+
+.brand{
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.nav a{
+  text-decoration: none;
+  color: var(--ink);
+  font-weight: 600;
+  padding: 8px 10px;
+  border-radius: 8px;
+  transition: color .2s ease, background-color .2s ease;
+}
+
+.nav a:hover,
+.nav a:active{
+  color: var(--brand);
+  background: rgba(255,101,101,0.08);
+}
+
+/* ===============================
+   Our Results – CSS Pentagons
+   =============================== */
+
+.our-results{
+  padding: 72px 0 88px;
+  background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.our-results h2{
+  font-size: clamp(28px, 2.2vw, 36px);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.our-results .lead{
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 44px;
+  color: var(--muted);
+  font-size: clamp(16px, 1.5vw, 18px);
+}
+
+/* Grid for the four pentagons */
+.results-grid{
+  display: grid;
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  gap: 28px;
+}
+
+@media (max-width: 900px){
+  .results-grid{ grid-template-columns: repeat(2, minmax(180px, 1fr)); }
+}
+@media (max-width: 480px){
+  .results-grid{ grid-template-columns: 1fr; }
+}
+
+/* Card wrapper so the label can sit centered over the pentagon */
+.pentagon-card{
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 16px 0;
+}
+
+/* The pentagon shape itself (no image!) */
+.pentagon{
+  width: 180px;
+  height: 180px;
+  /* Perfect centered pentagon using clip-path */
+  clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+  background: var(--brand);
+  filter: drop-shadow(0 14px 18px rgba(255, 101, 101, 0.35));
+  position: relative;
+}
+
+/* Optional subtle gloss/highlight for depth */
+.pentagon::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120px 90px at 50% 32%, rgba(255,255,255,.16), transparent 60%),
+              linear-gradient(180deg, rgba(255,255,255,.08), rgba(0,0,0,0) 40%);
+  pointer-events: none;
+  clip-path: inherit;
+}
+
+/* Centered label over each pentagon */
+.pentagon-label{
+  position: absolute;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 6px;
+  /* center over the shape */
+  inset: 0;
+  color: #ffffff;
+  font-weight: 700;
+  pointer-events: none; /* clicks pass through to shape if needed */
+}
+
+.pentagon-label strong{
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: .2px;
+}
+
+.pentagon-label span{
+  display: block;
+  font-weight: 600;
+  opacity: .95;
+}
+
+/* ===============================
+   Footer
+   =============================== */
+
+.site-footer{
+  border-top: 1px solid #e9eef3;
+  padding: 28px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
